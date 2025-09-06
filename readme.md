@@ -16,6 +16,22 @@ A full-stack AI-powered virtual assistant web application built with React (fron
 
 ---
 
+## 🖼️ Screenshots  
+
+### Signup Page  
+![Signup Page](./frontend/public/screenshots/signup.png)
+
+### Signin Page 
+![Signin Page](./frontend/public/screenshots/signin.png)
+
+### Homepage  
+![Homepage](./frontend/public/screenshots/home1.png)
+
+### Customize Page 
+![Customize Page](./frontend/public/screenshots/customize.png)
+
+
+---
 ## Project Structure
 
 ```
