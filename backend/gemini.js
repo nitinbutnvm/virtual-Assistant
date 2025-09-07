@@ -30,7 +30,7 @@ Instructions:
 
 - "type": determine the intent of the user.
 
-- "userinput": original sentence the user spoke. 
+- "userInput": original sentence the user spoke. 
    - Remove your own name if mentioned.
    - If it's a Google/YouTube search, only include the search query text.
 
@@ -61,7 +61,7 @@ Important:
 - If asked "who created you", answer with "{ Nitin }".
 - Only respond with the JSON object, nothing else.
 
-Now your userInput: ${command}
+Now your user input: ${command}
 `
 
  const result= await axios.post(apiUrl,{
