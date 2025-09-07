@@ -39,7 +39,7 @@ const handleSignIn=async(e)=>{
   return (
 
     <div className='w-[full] h-[100vh] bg-cover flex justify-center
-     items-center' style={{backgroundImage:`url(${bg})`}} >
+     items-center overflow-hidden' style={{backgroundImage:`url(${bg})`}} >
 
 <form className='w-[90%] h-[700px] max-w-[600px] bg-[#00000069] backdrop-blur
 shadow-lg shadow-black flex flex-col
