@@ -21,21 +21,24 @@ const handleSignUp=async(e)=>{
   e.preventDefault();
   setErr('')
   setLoading(true)
-  navigate('/customize')
+
   try {
-    let result=await axios.post(`${serverUrl}/api/auth/signup`,{
+    let result=await axios.post(`${serverUrl}/api/auth/signup`, {
       name,email,password
-    }, {withCredentials:true
-    })
+    }, { withCredentials:true })
+
     setUserData(result.data);
-    setLoading(false)
+    setLoading(false);
+
+    navigate('/customize')
   } catch (error) {
     console.log(error);
     setUserData(null);
-    setLoading(false)
-    setErr(error.response.data.message) 
+    setLoading(false);
+    setErr(error.response?.data?.message || "Something went wrong") 
   }
 }
+
 
   return (
 

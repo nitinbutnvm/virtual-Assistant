@@ -189,85 +189,95 @@ function Home() {
 
 
   return (
-    <div className="w-full h-[100vh] bg-gradient-to-t
-     from-[black] to-[#02023d] 
-     flex justify-center overflow-hidden
-     items-center flex-col gap-[15px]">
+  <div className="w-full min-h-screen bg-gradient-to-t from-black to-[#02023d] 
+    flex flex-col items-center justify-center gap-6 px-4 py-6 relative">
 
-      <CgMenuRight className="lg:hidden 
- text-white absolute top-[20px] right-[20px] 
- w-[25px] h-[25px] "
-        onClick={() => setHam(true)} />
+    {/* Mobile hamburger */}
+    <CgMenuRight
+      className="lg:hidden text-white absolute top-5 right-5 w-7 h-7 cursor-pointer"
+      onClick={() => setHam(true)}
+    />
 
-      <div className={`absolute lg:hidden top-0 w-full h-full 
-     bg-[#00000053] backdrop-blur-lg p-[20px] flex
-     flex-col gap-[20px] items-start ${ham ? "translate-x-0" :
-          "translate-x-full"} transition-transform  `}  >
+    {/* Mobile sidebar menu */}
+    <div
+      className={`absolute lg:hidden top-0 left-0 w-full h-full bg-[#00000080] 
+      backdrop-blur-lg p-5 flex flex-col gap-5 items-start transform 
+      ${ham ? "translate-x-0" : "translate-x-full"} transition-transform`}
+    >
+      <RxCross1
+        className="text-white absolute top-5 right-5 w-7 h-7 cursor-pointer"
+        onClick={() => setHam(false)}
+      />
 
-        <RxCross1 className=" text-white absolute
-         top-[20px] right-[20px]  w-[25px] h-[25px] "
-          onClick={() => setHam(false)} />
-
-        <button className='min-w-[150px] h-[60px]  bg-white 
-rounded-full font-semibold text-black  text-[19px] cursor-pointer top-[20px] 
-right-[20px]' onClick={handleLogOut} >
-          Log Out
-        </button>
-
-        <button className='min-w-[150px] h-[60px]  bg-white 
-rounded-full font-semibold text-black  text-[19px]   
-top-[100px] right-[20px] px-[20px] py-[10px] cursor-pointer'
-          onClick={() => navigate("/customize")}>
-          Customize Your Assistant
-        </button>
-
-        <div className="w-full h-[2px] bg-gray-400 "></div>
-        <h1 className="text-white font-semibold 
-text-[19px] ">History</h1>
-
-        <div className="w-full h-[400px] overflow-y-auto 
- flex flex-col gap-[20px] ">
-          {userData.history?.map((his) => (
-            <span className="text-gray-200 text-x[12px] truncate
-    " >{his}</span>
-          ))}
-
-        </div>
-
-      </div>
-
-      <button className='min-w-[150px] h-[60px] mt-[30px] bg-white 
-rounded-full font-semibold text-black  hidden lg:block text-[19px] cursor-pointer absolute top-[20px] 
-right-[20px]' onClick={handleLogOut} >
+      <button
+        className="w-full py-3 bg-white rounded-full font-semibold text-black text-base cursor-pointer"
+        onClick={handleLogOut}
+      >
         Log Out
       </button>
 
-      <button className='min-w-[150px] h-[60px] mt-[30px] bg-white 
-rounded-full font-semibold text-black  hidden lg:block text-[19px] absolute  
-top-[100px] right-[20px] px-[20px] py-[10px] cursor-pointer'
-        onClick={() => navigate("/customize")}>
+      <button
+        className="w-full py-3 bg-white rounded-full font-semibold text-black text-base cursor-pointer"
+        onClick={() => navigate("/customize")}
+      >
         Customize Your Assistant
       </button>
 
-      <div className=" w-[300px] h-[400px] flex justify-center 
-items-center overflow-hidden rounded-4xl shadow-lg ">
-        <img src={userData?.assistantImage} className="h-full 
-  object-cover" />
+      <div className="w-full h-[1px] bg-gray-400"></div>
+
+      <h1 className="text-white font-semibold text-lg">History</h1>
+
+      <div className="w-full h-[300px] overflow-y-auto flex flex-col gap-3">
+        {userData.history?.map((his, i) => (
+          <span key={i} className="text-gray-200 text-sm truncate">
+            {his}
+          </span>
+        ))}
       </div>
-      <h1 className="text-white text-[20px] font-semibold">
-        I Am, {userData?.assistantName} Your AI Assistant
-      </h1>
-
-      {!aiText && <img src={userImg} alt="" className="
-    w-[200px]" />}
-      {aiText && <img src={aiImg} alt="" className="
-    w-[200px]" />}
-
-      <h1 className="text-white text-[10px] 
-    font-light text-wrap ">{userText ? userText : aiText ? aiText : null}</h1>
-
     </div>
-  )
+
+    {/* Desktop buttons */}
+    <div className="hidden lg:flex flex-col gap-4 absolute top-5 right-5">
+      <button
+        className="px-6 py-3 bg-white rounded-full font-semibold text-black text-lg cursor-pointer"
+        onClick={handleLogOut}
+      >
+        Log Out
+      </button>
+
+      <button
+        className="px-6 py-3 bg-white rounded-full font-semibold text-black text-lg cursor-pointer"
+        onClick={() => navigate("/customize")}
+      >
+        Customize Your Assistant
+      </button>
+    </div>
+
+    {/* Assistant Image */}
+    <div className="w-48 sm:w-60 lg:w-72 h-64 sm:h-80 lg:h-96 
+      flex justify-center items-center overflow-hidden rounded-2xl shadow-lg">
+      <img src={userData?.assistantImage} className="w-full h-full object-cover" />
+    </div>
+
+    {/* Assistant Name */}
+    <h1 className="text-white text-lg sm:text-xl lg:text-2xl font-semibold text-center">
+      I Am, {userData?.assistantName} Your AI Assistant
+    </h1>
+
+    {/* Assistant or User Avatar */}
+    {!aiText ? (
+      <img src={userImg} alt="" className="w-32 sm:w-40" />
+    ) : (
+      <img src={aiImg} alt="" className="w-32 sm:w-40" />
+    )}
+
+    {/* Chat Text */}
+    <h1 className="text-white text-sm sm:text-base font-light text-center max-w-[90%] break-words">
+      {userText ? userText : aiText ? aiText : null}
+    </h1>
+  </div>
+);
+
 }
 
 
