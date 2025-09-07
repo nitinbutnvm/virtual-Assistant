@@ -1,5 +1,9 @@
 # Virtual Assistant
 
+## 🚀 Live Project  
+👉 [virtual-assistant-4p9n.onrender.com](https://virtual-assistant-4p9n.onrender.com)
+---
+
 A full-stack AI-powered virtual assistant web application built with React (frontend) and Node.js/Express (backend). Users can register, customize their assistant's name and image, and interact with the assistant via voice commands. The assistant responds with speech and can perform actions like searching Google, playing YouTube videos, and more.
 
 ---
