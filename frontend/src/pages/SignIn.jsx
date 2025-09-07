@@ -19,7 +19,7 @@ const handleSignIn=async(e)=>{
   e.preventDefault();
   setErr('')
   setLoading(true)
-  navigate('/home')
+  navigate('/')
 
   try {
     let result=await axios.post(`${serverUrl}/api/auth/signin`,{
