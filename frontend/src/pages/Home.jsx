@@ -190,7 +190,7 @@ function Home() {
 
   return (
   <div className="w-full min-h-screen bg-gradient-to-t from-black to-[#02023d] 
-    flex flex-col items-center justify-center gap-6 px-4 py-6 relative">
+    flex flex-col items-center justify-center gap-6 px-4 py-6 relative overflow-hidden">
 
     {/* Mobile hamburger */}
     <CgMenuRight
