@@ -200,41 +200,38 @@ function Home() {
 
     {/* Mobile sidebar menu */}
     <div
-      className={`absolute lg:hidden top-0 left-0 w-full h-full bg-[#00000080] 
-      backdrop-blur-lg p-5 flex flex-col gap-5 items-start transform 
-      ${ham ? "translate-x-0" : "translate-x-full"} transition-transform`}
-    >
-      <RxCross1
-        className="text-white absolute top-5 right-5 w-7 h-7 cursor-pointer"
-        onClick={() => setHam(false)}
-      />
+  className={`absolute lg:hidden top-0 left-0 w-full h-full bg-[#00000080] 
+  backdrop-blur-lg p-5 flex flex-col gap-5 items-start transform 
+  ${ham ? "translate-x-0" : "translate-x-full"} transition-transform`}
+>
+  <RxCross1
+    className="text-white absolute top-3 right-3 w-7 h-7 cursor-pointer z-50"
+    onClick={() => setHam(false)}
+  />
 
-      <button
-        className="w-full py-3 bg-white rounded-full font-semibold text-black text-base cursor-pointer"
-        onClick={handleLogOut}
-      >
-        Log Out
-      </button>
+  <button
+    className="w-full py-3 bg-white rounded-full font-semibold text-black text-base cursor-pointer mt-12"
+    onClick={handleLogOut}
+  >
+    Log Out
+  </button>
 
-      <button
-        className="w-full py-3 bg-white rounded-full font-semibold text-black text-base cursor-pointer"
-        onClick={() => navigate("/customize")}
-      >
-        Customize Your Assistant
-      </button>
+  <button
+    className="w-full py-3 bg-white rounded-full font-semibold text-black text-base cursor-pointer"
+    onClick={() => navigate("/customize")}
+  >
+    Customize Your Assistant
+  </button>
 
-      <div className="w-full h-[1px] bg-gray-400"></div>
+  <div className="w-full h-[1px] bg-gray-400"></div>
+  <h1 className="text-white font-semibold text-lg">History</h1>
 
-      <h1 className="text-white font-semibold text-lg">History</h1>
-
-      <div className="w-full h-[300px] overflow-y-auto flex flex-col gap-3">
-        {userData.history?.map((his, i) => (
-          <span key={i} className="text-gray-200 text-sm truncate">
-            {his}
-          </span>
-        ))}
-      </div>
-    </div>
+  <div className="w-full h-[300px] overflow-y-auto flex flex-col gap-3">
+    {userData.history?.map((his, i) => (
+      <span key={i} className="text-gray-200 text-sm truncate">{his}</span>
+    ))}
+  </div>
+</div>
 
     {/* Desktop buttons */}
     <div className="hidden lg:flex flex-col gap-4 absolute top-5 right-5">
