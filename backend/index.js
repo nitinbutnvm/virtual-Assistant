@@ -11,7 +11,7 @@ import userRouter from "./routes/user.routes.js";
 
 const app = express();
 app.use(corse({
-  origin:"http://localhost:5173",
+  origin:"https://virtual-assistant-4p9n.onrender.com",
   credentials:true
 }))
 
