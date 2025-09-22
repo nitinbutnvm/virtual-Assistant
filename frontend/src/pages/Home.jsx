@@ -73,8 +73,10 @@ function Home() {
 
 
   const handleCommand = (data) => {
-    const { type, userInput, response } = data
+    const { type, userInput, response } = data;
     speak(response)
+
+     let url = null;
 
     if (type === 'google_search')
       window.open(`https://www.google.com/search?q=${encodeURIComponent(userInput)}`, '_blank')
@@ -93,6 +95,16 @@ function Home() {
 
     if (type === 'weather_show')
       window.open(`https://www.weather.com/`, '_blank')
+
+    if (url) {
+    // try opening a new tab first
+    const newWindow = window.open("", "_blank");
+    if (newWindow) {
+      newWindow.location.href = url;
+    } else {
+      console.warn("Popup blocked! Allow popups for this site.");
+    }
+  }
   }
 
 
