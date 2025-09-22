@@ -72,48 +72,40 @@ function Home() {
   }
 
 
-  let ytTab = null; // global variable
+  const handleCommand = (data) => {
+    const { type, userInput, response } = data;
+    speak(response)
 
-const handleCommand = (data) => {
-  const { type, userInput, response } = data;
-  speak(response);
+     let url = null;
 
-  // URL mapping
-  let url = null;
-  if (type === 'google_search')
-    url = `https://www.google.com/search?q=${encodeURIComponent(userInput)}`;
-  if (type === 'youtube_play' || type === 'youtube_search')
-    url = `https://www.youtube.com/results?search_query=${encodeURIComponent(userInput)}&autoplay=1`;
-  if (type === 'calculator_open')
-    url = `https://www.online-calculator.com/full-screen-calculator/`;
-  if (type === 'instagram_open')
-    url = `https://www.instagram.com/`;
-  if (type === 'facebook_open')
-    url = `https://www.facebook.com/`;
-  if (type === 'weather_show')
-    url = `https://www.weather.com/`;
+    if (type === 'google_search')
+      window.open(`https://www.google.com/search?q=${encodeURIComponent(userInput)}`, '_blank')
 
-  // Open in safe tab (pre-authorized)
-  if (url) {
-    let newWindow = null;
-    if (type === 'youtube_play' || type === 'youtube_search') {
-      // reuse tab if already opened
-      if (!ytTab || ytTab.closed) {
-        ytTab = window.open("", "_blank");
-      }
-      newWindow = ytTab;
-    } else {
-      newWindow = window.open("", "_blank");
-    }
+    if (type === 'youtube_play' || type === 'youtube_search')
+      window.open(`https://www.youtube.com/results?search_query=${encodeURIComponent(userInput)}&autoplay=1`, '_blank')
 
+    if (type === 'calculator_open')
+      window.open(`https://www.online-calculator.com/full-screen-calculator/`, '_blank')
+
+    if (type === 'instagram_open')
+      window.open(`https://www.instagram.com/`, '_blank')
+
+    if (type === 'facebook_open')
+      window.open(`https://www.facebook.com/`, '_blank')
+
+    if (type === 'weather_show')
+      window.open(`https://www.weather.com/`, '_blank')
+
+    if (url) {
+    // try opening a new tab first
+    const newWindow = window.open("", "_blank");
     if (newWindow) {
       newWindow.location.href = url;
     } else {
       console.warn("Popup blocked! Allow popups for this site.");
     }
   }
-};
-
+  }
 
 
   useEffect(() => {
