@@ -16,31 +16,34 @@ function Customize2() {
 
     const [loading, setLoading]=useState(false)
 
-    const handleUpdateAssistant=()=>{
-      setLoading(true)
-    try {
-        let formData=new FormData()
-        formData.append("assistantName", assistantName)
-        if(backendImage){
-            formData.append("assistantImage", backendImage)
-         } else{
-            formData.append("imageUrl", selectedImage)
-         }
-        const result = axios.post(`${serverUrl}/api/user/update`
-        , formData, {
-            withCredentials: true}  )
-            setLoading(false)
-            console.log(result.data);
-            setUserData(result.data)
-            navigate("/")
+    const handleUpdateAssistant = async () => {
+  setLoading(true);
+  try {
+    let formData = new FormData();
+    formData.append("assistantName", assistantName);
 
-    } catch (error) {
-        setLoading(false)
-        console.log(error);
-        
+    if (backendImage) {
+      formData.append("assistantImage", backendImage);
+    } else {
+      formData.append("imageUrl", selectedImage);
     }
-    
-    }
+
+    const result = await axios.post(
+      `${serverUrl}/api/user/update`,
+      formData,
+      { withCredentials: true }
+    );
+
+    console.log(result.data);
+    setUserData(result.data);
+    navigate("/");
+
+  } catch (error) {
+    console.log(error);
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="w-full h-[100vh] bg-gradient-to-t
