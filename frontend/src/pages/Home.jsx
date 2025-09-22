@@ -57,7 +57,7 @@ function Home() {
 
     const voices = window.speechSynthesis.getVoices()
     const hindiVoice = voices.find(v => v.lang === 'hi-IN')
-    if (hindiVoice) utterence.voice = hindiVoice{
+    if (hindiVoice) {
       utterence.voice= hindiVoice
     }
 
