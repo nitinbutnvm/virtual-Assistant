@@ -80,7 +80,7 @@ function Home() {
       window.open(`https://www.google.com/search?q=${encodeURIComponent(userInput)}`, '_blank')
 
     if (type === 'youtube_play' || type === 'youtube_search')
-      window.open(`https://www.youtube.com/results?search_query=${encodeURIComponent(userInput)}`, '_blank')
+      window.open(`https://www.youtube.com/results?search_query=${encodeURIComponent(userInput)}&autoplay=1`, '_blank')
 
     if (type === 'calculator_open')
       window.open(`https://www.online-calculator.com/full-screen-calculator/`, '_blank')
